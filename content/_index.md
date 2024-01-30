@@ -11,7 +11,7 @@ header_button_cta:
 header_button_more:
   url: "#恒毅校友们的桥梁"
   title: "了解更多"
-teaser_image: "images/Heepa-Logo.png" # https://www.pexels.com/search/product%20testing/
+# teaser_image: "images/Heepa-Logo.png" # https://www.pexels.com/search/product%20testing/
 ---
 
 # 恒毅校友们的桥梁
@@ -28,7 +28,6 @@ teaser_image: "images/Heepa-Logo.png" # https://www.pexels.com/search/product%20
 {{< sign_up id="contact-form" placeholder_name="Name" placeholder_email="Email Address" placeholder_message="Message" button_label="Send ✉️">}}
 
 
-<!-- < contact_form id="contact-form" placeholder_name="Name" placeholder_email="Email Address" placeholder_message="Message" button_label="Send ✉️"> -->
 
 ---
 
