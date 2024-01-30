@@ -1,4 +1,7 @@
 {{ define "main" }}
-  {{- partial "header.html" . -}}
+	{{ if .Params.header_brand }}
+	  {{- partial "header.html" . -}}
+	{{ end }}
+  
   {{- partial "content.html" . -}}
 {{ end }}
