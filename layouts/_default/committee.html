@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html class="bg-white antialiased">
+  {{- partial "head.html" . -}}
+  <body>
+    {{- block "main" . }}{{- end }}
+    <main id="committee" class="w-full max-w-screen-xl mx-auto">
+	  <div class="px-6">
+	    <div
+	      id="content-wrapper"
+	      class="min-h-screen w-full  mx-auto"
+	    >
+	      <div id="content">
+	        <div class="flex">
+	          <div class="pb-16 w-full pt-12">
+	            <div class="">
+					<div class="text-center p-10">
+					    <h1 class="font-bold text-4xl mb-4">{{ .Params.title }}</h1>
+					    <h1 class="text-3xl">{{ .Params.subtitle }}</h1>
+					</div>
+					
+					<!-- ✅ Grid Section - Starts Here 👇 -->
+					<section id="Projects"
+					    class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
+					    {{ $th := .Params.th }}
+					    {{ range .Params.members  }}
+					    <!--   ✅ members - Starts Here 👇 -->
+					    <div class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+					        
+					            <img src="/heepa/images/{{ $th }}/committee/{{ .img }}"
+					                    alt="{{ .name }}" class="h-80 w-72 object-cover rounded-t-xl" />
+					            <div class="px-4 py-3 w-72">
+					                <span class="text-gray-400 mr-3 uppercase text-xs">{{ .year }}</span>
+					                <p class="text-lg font-bold text-black truncate block capitalize">{{ .name }}</p>
+					                <div class="flex items-center">
+					                    <p class="text-lg font-semibold text-black cursor-auto my-3">{{ .title }}</p>
+						            </div>
+					            </div>
+					        
+					    </div>
+					    {{ end }}
+					</section>
+
+				<!-- 🛑 Grid Section - Ends Here -->
+				 </div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</main>
+
+	 {{- partial "footer.html" . -}}
+  </body>
+</html>
