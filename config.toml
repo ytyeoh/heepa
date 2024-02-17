@@ -1,4 +1,4 @@
-baseURL = "https://ytyeoh.github.io/heepa/"
+baseURL = "https://heepa.org"
 
 # This is a "one page"-website, so we do not need these kinds of pages...
 disableKinds = ["section", "taxonomy", "term", "RSS", "robotsTXT", "404"]
