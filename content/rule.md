@@ -1,5 +1,5 @@
 ---
-header_brand: "恒毅校友会章程"
+title: "恒毅校友会章程"
 header_tagline_paragraph: ""
 
 teaser_image: "images/Heepa-Logo.png" # https://www.pexels.com/search/product%20testing/
