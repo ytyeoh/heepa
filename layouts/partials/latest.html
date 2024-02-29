@@ -24,21 +24,13 @@
 		                            {{ .Title }}
 		                        </a>
 		                    </h1>
-		                    <p class="text-grey-darker text-sm">
-		                        {{ time.Format "2 Jan 2006" .Date }}
-		                    </p>
+		                    
 		                </header>
 
 		                <footer class="flex items-center justify-between leading-none p-2 md:p-4">
-		                    <a class="flex items-center no-underline hover:underline text-black" href="#">
-		                        
-		                        <p class="ml-2 text-sm">
-		                            
-		                        </p>
-		                    </a>
-		                    <a class="no-underline text-grey-darker hover:text-red-dark" href="#">
-		                        
-		                    </a>
+		                    <p class="text-grey-darker text-sm">
+		                        {{ time.Format "2 Jan 2006" .Date }}
+		                    </p>
 		                </footer>
 
 		            </article>
