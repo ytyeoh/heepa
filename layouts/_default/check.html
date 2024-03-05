@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="bg-white antialiased">
+  {{- partial "head.html" . -}}
+  <body>
+    {{- block "main" . }}{{- end }}
+    <main id="committee" class="w-full max-w-screen-xl mx-auto">
+    <div class="px-6">
+      <div
+        id="content-wrapper"
+        class="min-h-screen w-full  mx-auto"
+      >
+        <div id="content">
+          <div class="flex">
+            <div class="pb-16 w-full pt-12">
+              <div class="">
+          <div class="text-center p-10">
+              <h1 class="font-bold text-4xl mb-4">{{ .Params.title }}</h1>
+              <h1 class="text-3xl">{{ .Params.subtitle }}</h1>
+          </div>
+          
+          
+
+		<form class="max-w-sm mx-auto" id="form">
+		  <div class="mb-5">
+		    <label for="ic" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">身份证号码</label>
+		    <input type="text" id="ic" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="876393938373" required />
+		  </div>
+		  <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+		</form>
+
+
+        <!-- 🛑 Grid Section - Ends Here -->
+         </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+   {{- partial "footer.html" . -}}
+   <script>
+   	$(document).ready(function () {
+	  $("form").submit(function (event) {
+	    
+
+	    $.ajax({
+	      type: "GET",
+	      url: "https://mao.heepa.org/api/check/"+$("#ic").val(),
+	    }).done(function (data) {
+	    	if (data['member'].length > 0){
+	    		$stt = data['member'][0]['status'];
+	    		if ($stt==1){
+	    			$ccc = "Valid Member";
+	    		} else {
+	    			$ccc = "Kindly Check with Admin for status";
+	    		}
+	    		$html = '<div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"><h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Approve Status</h5><p class="font-normal text-gray-700 dark:text-gray-400">'+$ccc+'</p></div>'
+	    		$("#form").html($html);
+
+	    	}else{
+	    		alert('IC no register, kndly register again.');
+	    	}
+	      
+	    });
+
+	    event.preventDefault();
+	  });
+	});
+   </script>
+  </body>
+</html>

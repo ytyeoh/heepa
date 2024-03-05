@@ -28,6 +28,11 @@ title = "恒毅校友会官方网站"
   identifier = "rule"
   url = "/rule"
 [[menu.main]]
+  name = "会员查询"
+  weight = 90
+  identifier = "check"
+  url = "/check"
+[[menu.main]]
   name = "理事"
   weight = 50
   identifier = "committee"
