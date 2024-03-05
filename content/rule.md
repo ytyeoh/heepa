@@ -1,8 +1,8 @@
 ---
-title: "恒毅校友会章程"
-header_tagline_paragraph: ""
+header_brand: "恒毅校友会章程"
 
-teaser_image: "images/Heepa-Logo.png" # https://www.pexels.com/search/product%20testing/
+
+
 ---
 ## 章节 1: 总纲
 
