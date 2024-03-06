@@ -36,7 +36,7 @@ title = "恒毅校友会官方网站"
   name = "理事"
   weight = 50
   identifier = "committee"
-  url = "committee/1"
+  url = "committee/28"
 
 [params]
     # A "copyright"-line to be added at the bottom of the page.
