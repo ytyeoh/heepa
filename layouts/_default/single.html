@@ -2,9 +2,6 @@
 	{{ if .Params.header_brand }}
 	  {{- partial "header.html" . -}}
 	{{ end }}
-	{{ if .Params.title }}
-	  {{- partial "header.html" . -}}
-	{{ end }}
   
   {{- partial "content.html" . -}}
 {{ end }}
