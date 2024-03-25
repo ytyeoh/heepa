@@ -15,12 +15,12 @@
 		                <a href="{{ .RelPermalink }}">
 		                	
 		                		
-		                    <img alt="images{{ .Params.img }}" class="block h-auto w-full" src='images/{{ time.Format "2006" .Date }}/news/{{ time.Format "2/2" .Date }}/{{ .Params.img }}'>
+		                    <img alt="images{{ .Params.img }}" class="block h-auto w-full" src='images/{{ time.Format "2006" .Date }}/news/{{ time.Format "1/2" .Date }}/{{ .Params.img }}'>
 		                </a>
 
 		                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
 		                    <h1 class="text-lg">
-		                        <a class="no-underline hover:underline text-black" href="#">
+		                        <a class="no-underline hover:underline text-black" href="{{ .RelPermalink }}">
 		                            {{ .Title }}
 		                        </a>
 		                    </h1>
