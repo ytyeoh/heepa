@@ -51,7 +51,7 @@
 	    	if (data['member'].length > 0){
 	    		$stt = data['member'][0]['status'];
 	    		if ($stt==1){
-	    			$ccc = "Valid Member";
+					$ccc = "Valid Member" +"Name: "+data['member'][0]['name'];
 	    		} else {
 	    			$ccc = "Kindly Check with Admin for status";
 	    		}
