@@ -56,7 +56,18 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     const modal = new Modal(document.getElementById("popup-modal"));
-    modal.show(); // Show modal when page loads
+    
+
+    // Set the end date (YYYY, MM-1, DD)
+    const endDate = new Date(2025, 3, 14); // April 14, 2025 (Month is zero-based)
+
+    // Get today's date
+    const today = new Date();
+
+    // Show modal only if today is before the end date
+    if (today < endDate) {
+        modal.show();
+    }
 });
 </script>
 <script>
