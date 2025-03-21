@@ -12,10 +12,10 @@
 		            <!-- Article -->
 		            <article class="overflow-hidden rounded-lg shadow-lg">
 
-		                <a href="{{ .RelPermalink }}">
+		                <a href="{{ .RelPermalink }}" class="max-h-24 overflow-y-hidden">
 		                	
 		                		
-		                    <img alt="images{{ .Params.img }}" class="block h-auto w-full" src='images/{{ time.Format "2006" .Date }}/news/{{ time.Format "1/2" .Date }}/{{ .Params.img }}'>
+		                    <img alt="images{{ .Params.img }}" class=" block fixed-image" src='images/{{ time.Format "2006" .Date }}/news/{{ time.Format "1/2" .Date }}/{{ .Params.img }}'>
 		                </a>
 
 		                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
