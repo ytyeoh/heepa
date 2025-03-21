@@ -29,3 +29,8 @@ h4{
   margin-bottom: 1em;
   line-height: 1.3333333;
 }
+.fixed-image {
+    height: 200px;  /* Set a fixed height for all images */
+    width: 100%;    /* Make images responsive */
+    object-fit: cover;  /* Crop images to fill the space while maintaining aspect ratio */
+}
