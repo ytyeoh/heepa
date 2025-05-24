@@ -84,6 +84,7 @@
         </div>
     </li>
   </ul>
+
   <div class="p-3 w-full text-sm font-medium text-gray-900 bg-white rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
     <h4 class="mb-4 font-semibold text-gray-900 dark:text-white">根据2013年恒毅校友会章程</h4>
     <p class="mb-4 font-semibold text-gray-600 dark:text-white">2.2 入会资格：凡曾就读亍恒毅中小学及恒毅幼稚园校友，均可申请为本会普通会员，唯只有曾就读亍恒毅中小学校友才可申请为永久会员。</p>
@@ -92,7 +93,23 @@
   <input type="hidden" required name="12" id="12" />
   <input type="hidden" required name="13" id="13" />
 </div>
-      
+
+<div class="relative z-0 w-full mb-5 group border border-gray-200 rounded-lg p-4 dark:border-gray-600 bg-white dark:bg-gray-800">
+  <h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">付款证明</h3>
+
+  <label for="file_input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+    上载文件（图片或 PDF）
+  </label>
+
+  <input
+    id="file_input"
+    name="14"
+    type="file"
+    accept="image/*,application/pdf"
+    class="block w-full text-sm text-blue-900 border border-blue-300 rounded-lg cursor-pointer bg-blue-50 dark:text-blue-100 focus:outline-none dark:bg-blue-900 dark:border-blue-500 dark:placeholder-blue-200 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-blue-600 file:text-white hover:file:bg-blue-700 transition"
+  >
+</div>
+
 
 <div class="flex items-center m-3">
     <input id="link-checkbox" require type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">

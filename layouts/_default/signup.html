@@ -20,7 +20,7 @@
           
           
 
-    <form class="max-w-sm mx-auto" id="form-ss">
+    <form class="max-w-sm mx-auto" id="form-ss"  enctype="multipart/form-data">
     	{{- partial "component/form.html" . -}}
     	<button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">加入</button>
       
@@ -42,13 +42,16 @@
         event.preventDefault();
         
         // Get form data
-        var formData = $(this).serialize();
+          const formData = new FormData(this);
 
         // Ajax request
         $.ajax({
             type: 'POST',
             url: 'https://mao.heepa.org/api/new_member',
+            // url: 'http://localhost:8001/api/new_member',
             data: formData,
+            processData: false, // ✅ don't process FormData
+            contentType: false, // ✅ don't set content-type
             success: function(response) {
                 // Handle success response
             	alert('请等待管理员批准');
