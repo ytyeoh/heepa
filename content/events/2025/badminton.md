@@ -9,7 +9,7 @@ date: 2025-02-02T21:38:52+08:00
 ---
 
 ## 羽聚以恒，情归于毅
-{{< figure src="/images/2025/events/badminton.jpeg" alt="Alt Text" title="恒毅四校第一届校友羽毛球友谊交流赛" >}}
+{{< figure src="/images/2025/events/badminton.jpeg" alt="恒毅四校第一届校友羽毛球友谊交流赛" title="恒毅四校第一届校友羽毛球友谊交流赛" >}}
 
 2025年 恒毅四校第一届校友羽毛球友谊交流赛
 
@@ -32,4 +32,7 @@ Account No. : 4864752035
 *_报名采用“先报先得”的方式，不设有参赛人数限制~~但，主办方保留酌情限制参赛人数数量的权利_*
 *_Entries are accepted on a “first come first serve” basic with no limitations on entries_*
 *_However the organizers reserved the rights to limit the number of entries as deem fit_*
+
+### 衣服尺寸
+{{< figure src="/images/2025/events/size.jpeg" alt="size of t-shirt"  >}}
 
