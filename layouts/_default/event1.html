@@ -1,0 +1,42 @@
+{{ define "main" }}
+	{{ if .Params.header_brand }}
+	  {{- partial "header.html" . -}}
+	{{ end }}
+  
+  {{- partial "content.html" . -}}
+  {{- partial "component/badminton_form.html" . -}}
+  <script>
+		$(document).ready(function() {
+	    $('#form-ss').submit(function(event) {
+	        // Prevent default form submission
+	        event.preventDefault();
+	        
+	        // Get form data
+	          const formData = new FormData(this);
+
+	        // Ajax request
+	        $.ajax({
+	            type: 'POST',
+	            url: 'https://mao.heepa.org/api/badminton',
+	            // url: 'https://mao.heepa.org/api/badminton',
+	            data: formData,
+	            processData: false, // ✅ don't process FormData
+	            contentType: false, // ✅ don't set content-type
+	            success: function(response) {
+	                // Handle success response
+	            	alert('请将Tng or Bank slip和名字 WhatsApp给我们');
+	                console.log('Form submitted successfully:', response);
+	                window.location.href = "/events/2025/badminton";
+	            },
+	            error: function(xhr, status, error) {
+	                // Handle error response
+
+	                console.error('Error submitting form:', error);
+	                alert('submi fail');
+	            }
+	        });
+	    });
+	});
+
+	</script>
+{{ end }}
