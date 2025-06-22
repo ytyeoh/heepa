@@ -11,6 +11,9 @@ theme = "hugo-product-launch"
 # The "title" of your website
 title = "恒毅校友会官方网站"
 
+# config.toml
+timeout = "1200s" # Or "120s"
+
 # Render line-breaks in .md-files as line-breaks in HTML.
 # This is e.g. useful for rendering a multi-line address.
 [markup]

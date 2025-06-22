@@ -4,4 +4,7 @@
 	{{ end }}
   
   {{- partial "content.html" . -}}
+  {{ if .Params.gallery }}
+  {{- partial "gallery.html" . -}}
+  {{ end }}
 {{ end }}
