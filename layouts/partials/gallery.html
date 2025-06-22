@@ -1,0 +1,120 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.min.css" />
+
+<div class="container mx-auto p-4 sm:p-6 lg:p-8 bg-gray-50 rounded-lg shadow-xl my-8">
+  <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-8 text-center">Event Galleries</h1>
+
+  <!-- Navigation for Gallery Sections -->
+  <nav class="mb-8 p-4 bg-white rounded-lg shadow-md flex flex-wrap justify-center gap-4">
+    <h3 class="text-xl font-semibold text-gray-800 w-full text-center mb-2">Jump to Section:</h3>
+    {{- range .Params.gallery -}}
+      <a href="#gallery-{{ .title | urlize }}" class="px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 hover:bg-indigo-200 transition-colors duration-200 font-medium">
+        {{ .title }}
+      </a>
+    {{- end -}}
+  </nav>
+
+  {{- /* Loop through each item in the 'gallery' array from the page's front matter */ -}}
+  {{- range .Params.gallery -}}
+    {{- $currentFolder := .folder -}} {{/* Store the folder value from the current gallery item */}}
+    <section id="gallery-{{ .title | urlize }}" class="mb-12 pt-4"> {{/* Added ID for navigation target */}}
+      <h2 class="text-2xl sm:text-3xl font-bold text-indigo-700 mb-6 pb-2 border-b-2 border-indigo-300 text-center">
+        {{ .title }}
+      </h2>
+
+      {{- /*
+          Construct the dynamic image directory path.
+          $.Page.Date refers to the current page's date (using $ to access global page context).
+          time.Format "2006" gets the year (e.g., 2025)
+          time.Format "1" gets the month without leading zero (e.g., 6)
+          time.Format "2" gets the day without leading zero (e.g., 17)
+          $currentFolder gets the 'a' or 'b' from the gallery item.
+          Example path: "images/2025/news/6/17/a"
+      */ -}}
+      {{- $imageDir := printf "images/%s/news/%s/%s/%s" ($.Page.Date.Format "2006") ($.Page.Date.Format "1") ($.Page.Date.Format "2") $currentFolder -}}
+
+      {{- /*
+          Match all image files (jpg, jpeg, png, gif) within the constructed directory.
+          The path is relative to your Hugo project's 'assets/' folder.
+      */ -}}
+      {{- $images := resources.Match (printf "%s/*.{jpg,jpeg,png,gif}" $imageDir) -}}
+
+      {{- /* Check if any images were found in this folder */ -}}
+      {{- if $images -}}
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {{- /* Loop through each found image resource */ -}}
+          {{- range $images -}}
+            {{- /* Prepare filename for display and FancyBox caption */ -}}
+            {{- $fullFileName := path.Base .RelPermalink -}}
+            {{- $nameWithoutExt := strings.TrimSuffix (path.Ext $fullFileName) $fullFileName -}}
+            {{- $displayedCaption := strings.Replace "%20" " " $nameWithoutExt -}}
+
+            {{- /* Define target widths for responsive image generation */ -}}
+            {{- $originalImage := . -}}
+            {{- $thumbHeight := 192 -}} {{/* Corresponds to Tailwind's h-48 */}}
+            {{- $widths := slice 320 640 960 1280 -}} {{/* Target widths for srcset */}}
+
+            <div class="bg-white p-2 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+              <a
+                data-fancybox="gallery-{{ $currentFolder | urlize }}"
+                href="{{ .RelPermalink }}" {{/* FancyBox always loads the original full image */}}
+                data-caption="{{ $displayedCaption }}"
+                class="gallery-item cursor-pointer"
+              >
+                <picture>
+                  {{- /* WebP sources for different widths */ -}}
+                  <source type="image/webp" srcset="
+                    {{- range $i, $width := $widths -}}
+                      {{- $resized := $originalImage.Fill (printf "%dx%d Center webp" $width $thumbHeight) -}}
+                      {{- if $resized -}}
+                        {{ $resized.RelPermalink }} {{ $resized.Width }}w{{ if lt ($i) (sub (len $widths) 1) }},{{ end -}}
+                      {{- end -}}
+                    {{- end -}}
+                  " sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33.3vw, (min-width: 640px) 50vw, 100vw">
+
+                  {{- /* Original format sources (JPEG/PNG) for different widths as fallback */ -}}
+                  <source type="{{ $originalImage.MediaType.String }}" srcset="
+                    {{- range $i, $width := $widths -}}
+                      {{- $resized := $originalImage.Fill (printf "%dx%d Center" $width $thumbHeight) -}}
+                      {{- if $resized -}}
+                        {{ $resized.RelPermalink }} {{ $resized.Width }}w{{ if lt ($i) (sub (len $widths) 1) }},{{ end -}}
+                      {{- end -}}
+                    {{- end -}}
+                  " sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33.3vw, (min-width: 640px) 50vw, 100vw">
+
+                  {{- /* Fallback img tag (uses a large processed version for display, or original if issues) */ -}}
+                  <img
+                    src="{{ ($originalImage.Fill (printf "%dx%d Center" (index $widths (sub (len $widths) 1)) $thumbHeight)).RelPermalink }}"
+                    alt="{{ .Name }}"
+                    loading="lazy"
+                    class="w-full h-48 object-cover rounded-md mb-2 border border-gray-200"
+                  >
+                </picture>
+              </a>
+              {{- /* Display image filename without extension and replace %20 with space */ -}}
+              <p class="text-sm text-gray-600 truncate text-center">
+                {{ $displayedCaption }}
+              </p>
+            </div>
+          {{- end -}}
+        </div>
+      {{- else -}}
+        <p class="text-center text-gray-600 p-4 bg-yellow-50 rounded-md border border-yellow-200">
+          No images found in the directory: `<span class="font-mono text-sm text-yellow-800">{{ $imageDir }}</span>`.
+          Please ensure images are in `assets/{{ $imageDir }}/` and are valid image formats.
+        </p>
+      {{- end -}}
+    </section>
+  {{- end -}}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<script>
+  // Initialize FancyBox
+  Fancybox.bind("[data-fancybox]", {
+    // Custom options can go here
+    // For example:
+    // Thumbs: false, // Disable thumbnails
+    // Toolbar: true, // Show toolbar
+    // Caption: (fancybox, slide) => slide.caption, // Ensure caption is used from data-caption
+  });
+</script>
