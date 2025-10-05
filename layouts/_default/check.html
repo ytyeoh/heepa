@@ -53,7 +53,7 @@
 	    		if ($stt==1){
 					$ccc = "Valid Member" +"<br>Name: "+data['member'][0]['name']+"<br> Id: "+data['member'][0]['id'];
 	    		} else {
-	    			$ccc = "Kindly Check with Admin for status";
+	    			$ccc = "Kindly check with the admin for the current status. Some required information might be missing, which could cause your membership status to remain pending.";
 	    		}
 	    		$html = '<div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"><h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Approve Status</h5><p class="font-normal text-gray-700 dark:text-gray-400">'+$ccc+'</p></div>'
 	    		$("#form").html($html);
